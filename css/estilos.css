@@ -1,10 +1,13 @@
 body{
 
+
     font-family: Arial, sans-serif;
-
-    margin:40px;
-
+    margin: 40px;
+    background-color: #d4f7d4; /* verde claro */
+    color: black;
 }
+
+
 
 
 
