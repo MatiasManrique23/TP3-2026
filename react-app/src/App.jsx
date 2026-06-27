@@ -22,15 +22,15 @@ function App() {
   function agregarPersona(e) {
     e.preventDefault();
 
-    setPersonas([
-      ...personas,
-      {
-        ...form,
-        edad: Number(form.edad),
-        altura: Number(form.altura),
-        peso: Number(form.peso)
-      }
-    ]);
+    const nueva = {
+      nombre: form.nombre,
+      apellido: form.apellido,
+      edad: Number(form.edad),
+      altura: Number(form.altura),
+      peso: Number(form.peso)
+    };
+
+    setPersonas([...personas, nueva]);
 
     setForm({
       nombre: "",
@@ -41,7 +41,7 @@ function App() {
     });
   }
 
-  function eliminarPersona(index) {
+  function eliminar(index) {
     setPersonas(personas.filter((_, i) => i !== index));
   }
 
@@ -54,6 +54,7 @@ function App() {
 
       <h1>Personas React</h1>
 
+      {/* FORM IMPORTANTE */}
       <form onSubmit={agregarPersona}>
 
         <input name="nombre" value={form.nombre} onChange={handleChange} placeholder="Nombre" />
@@ -62,7 +63,10 @@ function App() {
         <input name="altura" value={form.altura} onChange={handleChange} placeholder="Altura" />
         <input name="peso" value={form.peso} onChange={handleChange} placeholder="Peso" />
 
-        <button>Agregar</button>
+        {/* BOTÓN IMPORTANTE */}
+        <button type="submit">
+          Agregar
+        </button>
 
       </form>
 
@@ -91,7 +95,7 @@ function App() {
               <td>{p.peso}</td>
               <td>{imc(p.peso, p.altura)}</td>
               <td>
-                <button onClick={() => eliminarPersona(i)}>
+                <button onClick={() => eliminar(i)}>
                   Eliminar
                 </button>
               </td>
